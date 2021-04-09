@@ -1,3 +1,3 @@
-<div>Title: {{ $item->getTitle() }}</div>
-<div>Author: {{ $item->getAuthor() }}</div>
+<div>Title: {{ $item->title}}</div>
+<div>Author: {{$item->author }}</div>
 <div><a href="{{ route('books.index') }}">Back</a></div>
