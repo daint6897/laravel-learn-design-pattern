@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Core\Services\BookServiceContract;
 
 class BooksController extends Controller
 {
+    protected $service;
+    public function __construct(BookServiceContract $service)
+    {
+        $this->service = $service;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,8 @@ class BooksController extends Controller
      */
     public function index()
     {
-        //
+        $items = $this->service->paginate();
+        return view('books.index', compact("items"));
     }
 
     /**
@@ -23,7 +30,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        //
+        return view('books.create');
     }
 
     /**
@@ -34,7 +41,8 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->service->store($request->all());
+        return redirect()->route('books.index');
     }
 
     /**
@@ -45,7 +53,8 @@ class BooksController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = $this->service->find($id);
+        return view('books.show', compact('item'));
     }
 
     /**
@@ -56,7 +65,8 @@ class BooksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = $this->service->find($id);
+        return view('books.edit', compact('item'));
     }
 
     /**
@@ -68,7 +78,8 @@ class BooksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->service->update($id, $request->all());
+        return redirect()->route('books.index');
     }
 
     /**
@@ -79,6 +90,7 @@ class BooksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->service->destroy($id);
+        return redirect()->route('books.index');
     }
 }
