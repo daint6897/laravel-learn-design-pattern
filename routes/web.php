@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
-
+use App\Http\Controllers\SearchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +17,6 @@ use App\Http\Controllers\BooksController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-
 Route::resource('/books', BooksController::class);
+
+Route::get('/search',[SearchController::class, 'filter']);
