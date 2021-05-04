@@ -16,9 +16,9 @@ class Event implements Filter
      */
     public static function apply(Builder $builder, $value)
     {
-        var_dump($builder->whereHas('rsvps.event', function ($q) use ($value) {
-            $q->where('events.name', $value);
-         })->toSql());
+        // var_dump($builder->whereHas('rsvps.event', function ($q) use ($value) {
+        //     $q->where('events.name', $value);
+        //  })->toSql());
         return $builder->whereHas('rsvps.event', function ($q) use ($value) {
            $q->where('events.name', $value);
         });
