@@ -10,7 +10,6 @@ class SearchController extends Controller
 {
     public function filter(Request $request)
     {
-        // dd(1);
         $results = \App\Models\Post::FilterBy($request->all())->get();
         $resultTag = \App\Models\Post::with('tags')->FilterBy($request->all())->get();
         $resultTag1 = \App\Models\Post::FilterBy($request->all())->get();

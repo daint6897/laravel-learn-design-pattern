@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TestRelationShipController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +21,5 @@ Route::get('/', function () {
 Route::resource('/books', BooksController::class);
 
 Route::get('/search',[SearchController::class, 'filter']);
+
+Route::get('/has-many-through',[TestRelationShipController::class, 'HasManyThrough']);
