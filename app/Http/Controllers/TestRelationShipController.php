@@ -16,5 +16,20 @@ class TestRelationShipController extends Controller
         $postsByCountry =  Country::first();
         // $postsByCountry =  Country::find(1)->posts->toArray();
         dd($postsByCountry->posts->toArray());
+
+        // Polymorphic Relationships
+    }
+
+    public function PolymorphicRelationship(){
+        $post = \App\Models\Post::find(1);
+
+
+        $like = \App\Models\Like::find(1);
+
+        $likeable = $like->likeable;
+
+
+        $posts = \App\Models\Post::has('comments')->get();
+        dd($posts);
     }
 }

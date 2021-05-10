@@ -13,6 +13,6 @@ class CommentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Comment::factory()->count(30)->create();
     }
 }

@@ -23,3 +23,5 @@ Route::resource('/books', BooksController::class);
 Route::get('/search',[SearchController::class, 'filter']);
 
 Route::get('/has-many-through',[TestRelationShipController::class, 'HasManyThrough']);
+
+Route::get('/polymorphic-relationship',[TestRelationShipController::class, 'PolymorphicRelationship']);
